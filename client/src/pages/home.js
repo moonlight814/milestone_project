@@ -5,8 +5,8 @@ import {RiHomeFill} from 'react-icons/ri';
 
 
 
-const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize';
-const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-r-2 border-black transition-all duration-200 ease-in-out capitalize';
+const isNotActiveStyle = `flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize`;
+const isActiveStyle = `flex items-center px-5 gap-3 font-extrabold border-r-2 border-black transition-all duration-200 ease-in-out capitalize`;
 
 const events= [
     {name: 'Black Lives Matter'},
@@ -32,7 +32,7 @@ export default function Home(){
                             Public Events
                         </h3>
                         {events.slice(0, events.length-1).map((event)=>(
-                            <NavLink
+                            <NavLink 
                             to={`/event/${event.name}`}
                             className={(isActive) => isActive? isActiveStyle : isNotActiveStyle}
                             key={event.name}
