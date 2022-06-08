@@ -12,14 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     static associate({Users, Profiles, Comments}) {
       //user
       Events.belongsTo(Users,{
-        foreignKey: 'user_name',
+        foreignKey: 'user_id',
         as: 'users'
       })
-      //Profiles
-      Events.belongsTo(Profiles,{
-        foreignKey:'profile_id',
-        as: 'profiles'
-      })
+      //Profiles profiles do not exist in events
+      // Events.belongsTo(Profiles,{
+      //   foreignKey:'profile_id',
+      //   as: 'profiles'
+      // })
       //Comments
       Events.hasMany(Comments,{
         foreignKey: 'event_id',
@@ -54,14 +54,16 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       allowNull:false
     },
-    time_posted: DataTypes.DATE,
+    time_posted:{ 
+      type: DataTypes.DATE,
+    allowNull:true},
     group_size: {type:
       DataTypes.INTEGER,
       allowNull: false
     },
     image: {
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:true
     }
   }, 
   {
